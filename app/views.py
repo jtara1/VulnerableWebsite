@@ -1,9 +1,8 @@
-from flask import Flask
 from flask import request
 from flask import render_template
 import pprint
-
-app = Flask(__name__)
+import json
+from app import app
 
 
 @app.route('/')
@@ -13,16 +12,15 @@ def my_form():
 
 @app.route('/', methods=['POST'])
 def my_form_post():
-
     text = request.form['text']
-    processed_text = text.upper()
-    return processed_text
+    pretty_json = prettify_json(text)
+    return render_template("my-form.html", pretty_json=pretty_json)
 
 
 def prettify_json(text):
-    pp = pprint.PrettyPrinter(indent=4)
-    json = eval(text)
-    pp.pprint(json)
+    data = json.loads(str(text))
+    return pprint.pformat(data, indent=4, width=10)
+    # return eval(text)
 
 
 if __name__ == '__main__':

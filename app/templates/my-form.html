@@ -7,5 +7,10 @@
         <input type="text" name="text">
         <input type="submit" name="my-form" value="Send">
     </form>
+    {% if pretty_json %}
+    <p>{{ pretty_json }}</p>
+    {% else %}
+    <h2>Waiting for input ...</h2>
+    {% endif %}
 </body>
 </html>
