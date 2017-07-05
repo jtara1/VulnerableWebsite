@@ -3,14 +3,14 @@
 <body>
     <h1>Enter JSON</h1>
     <h2>It'll be printed in a readable format</h2>
-    <form action="." method="POST">
-        <input type="text" name="text">
+    <form action="submit" method="POST">
+        <textarea rows="20" cols="50" name="text"></textarea>
         <input type="submit" name="my-form" value="Send">
     </form>
     {% if pretty_json %}
-    <p>{{ pretty_json }}</p>
+    <p style="white-space: pre-wrap;">{{ pretty_json }}</p>
     {% else %}
-    <h2>Waiting for input ...</h2>
+    <h4>Waiting for input ...</h4>
     {% endif %}
 </body>
 </html>
