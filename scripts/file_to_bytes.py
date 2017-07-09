@@ -1,16 +1,15 @@
-import sys
-import io
-from PIL import Image
+import click
 
 
-if len(sys.argv) < 2:
-	raise Exception("no file name given via command line interface")
+@click.command()
+@click.argument('file_name', type=click.Path())
+@click.argument('output_file_name', default='img_bytes.txt', type=click.Path())
+def main(file_name, output_file_name):
+    # save bytes
+    with open(file_name, 'rb') as infile:
+        with open(output_file_name, 'w') as outfile:
+            outfile.write(str(bytes(infile.read())))
 
-file_name = sys.argv[1]
-output_file_name = sys.argv[2] if len(sys.argv) > 2 else "output.txt"
 
-# save bytes
-with open(file_name, 'rb') as infile:
-	with open(output_file_name, 'w') as outfile:
-		outfile.write(str(bytes(infile.read())))
-
+if __name__ == "__main__":
+    main()
