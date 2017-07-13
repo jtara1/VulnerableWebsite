@@ -2,6 +2,7 @@ from PIL import Image
 import io
 import ast
 import click
+import builtins
 
 
 @click.command()

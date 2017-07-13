@@ -26,4 +26,4 @@ def prettify_json(text):
     # Vulnerability 2
     data = eval(text)
     # data = json.loads(text.replace("'", '"'))  # this alternative would fix Vulnerability 2
-    return pprint.pformat(data, indent=4, width=5)
+    return pprint.pformat(data, indent=4, width=70)
